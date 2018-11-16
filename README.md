@@ -1,36 +1,26 @@
-# OS-ADMIN-VUE
+# redcat-manage
 
 <br>
 
 > 1、基于vue-cli + Element构建的前端权限管理页 <br>
 
-> 2、node版本6.x+ , npm版本3.x+
+> node版本6.x+ , npm版本3.x+
 
-> 3、注：webpack使用4.x+版本，构建方式跟3.x有很大区别，建议查看官方文档
-```$xslt
-http://webpack.css88.com/
-```
-
-
+> 注：webpack使用4.x+版本，构建方式跟3.x有很大区别，建议查看官方文档
 <br>
 
 # 开始使用
 
 
-```
-1、克隆项目
-git clone https://github.com/asd821300801/oservice-admin-vue.git
-```
-<br>
 
 ```
-2、安装依赖
+安装依赖
 npm install
 ```
 <br>
 
 ```
-3、运行
+运行
 npm run dev
 ```
 <br>

@@ -61,6 +61,7 @@
       </el-table-column>
     </el-table>
     <el-pagination
+     background
       @size-change="sizeChangeHandle"
       @current-change="currentChangeHandle"
       :current-page="pageIndex"

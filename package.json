@@ -1,9 +1,9 @@
 {
-  "name": "os-admin",
+  "name": "redcat-manage",
   "version": "3.8.0",
   "license": "MIT",
-  "description": "基于vue-cli构建的后台权限框架",
-  "author": "LingDu <821300801@qq.com>",
+  "description": "后台管理",
+  "author": "xiewl-admin",
   "scripts": {
     "dev": "cross-env BABEL_ENV=development webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "build:prod": "cross-env NODE_ENV=production env_config=prod node build/build.js",
@@ -26,13 +26,6 @@
     "management-system",
     "admin-template"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PanJiaChen/vue-element-admin.git"
-  },
-  "bugs": {
-    "url": "https://github.com/PanJiaChen/vue-element-admin/issues"
-  },
   "dependencies": {
     "axios": "0.18.0",
     "clipboard": "1.7.1",
