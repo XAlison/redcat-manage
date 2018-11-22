@@ -24,29 +24,23 @@
               <img src="~@/assets/img/avatar.gif" :alt="userName">{{ userName }}
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @click.native="updatePasswordHandle()">修改密码</el-dropdown-item>
-              <el-dropdown-item @click.native="logoutHandle()">退出</el-dropdown-item>
+              <el-dropdown-item @click.native="logoutHandle()">退出系统</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </el-menu-item>
       </el-menu>
     </div>
-    <!-- 弹窗, 修改密码 -->
-    <update-password v-if="updatePassowrdVisible" ref="updatePassowrd"></update-password>
+
   </nav>
 </template>
 
 <script>
-  import UpdatePassword from './main-navbar-update-password'
   import { clearLoginInfo } from '@/utils'
   export default {
     data () {
       return {
         updatePassowrdVisible: false
       }
-    },
-    components: {
-      UpdatePassword
     },
     computed: {
       navbarLayoutType: {
@@ -65,13 +59,7 @@
       }
     },
     methods: {
-      // 修改密码
-      updatePasswordHandle () {
-        this.updatePassowrdVisible = true
-        this.$nextTick(() => {
-          this.$refs.updatePassowrd.init()
-        })
-      },
+
       // 退出
       logoutHandle () {
         this.$confirm(`确定进行[退出]操作?`, '提示', {

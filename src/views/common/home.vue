@@ -1,8 +1,12 @@
 <template>
   <div class="mod-home">
-    <h3>项目介绍</h3>
     <ul>
-      <li>基于 Spring Boot 2.0 + Shiro + Mybatis + Vue2.0 + Element 实现的权限系统</li>
+      <li>后台租户管理系统</li>
+      <div class="tipMsg">
+        <p>
+          登录如果没有对应的菜单,可以联系管理员设置对应的菜单权限!
+        </p>
+      </div>
     </ul>
   </div>
 </template>
@@ -16,5 +20,12 @@
   .mod-home {
     line-height: 1.5;
   }
+  .tipMsg {
+    padding: 8px 16px;
+    background-color: #ecf8ff;
+    border-radius: 4px;
+    border-left: 5px solid #50bfff;
+    margin: 20px 0;
+}
 </style>
 

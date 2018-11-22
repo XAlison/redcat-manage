@@ -66,14 +66,14 @@
       // 获取当前管理员信息
       getUserInfo () {
         this.$http({
-          url: this.$http.adornUrl('/sys/user/info'),
+          url: this.$http.adornUrl('/api/accounts/current'),
           method: 'get',
           params: this.$http.adornParams()
         }).then(({ data }) => {
-          if (data && data.code === 0) {
+          if (data ) {
             this.loading = false
-            this.userId = data.user.userId
-            this.userName = data.user.username
+            this.userId = data.userId
+            this.userName = data.name
           }
         })
       }
