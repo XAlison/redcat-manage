@@ -8,7 +8,7 @@
         <el-form-item label="系统名称" prop="password">
           <el-input type="text" v-model="name" clearable v-bind:disabled="disabled"></el-input>
         </el-form-item>
-        <el-form-item label="系统logo" prop="logo">
+        <el-form-item label="系统logo" prop="imgLogo">
           <el-upload
             ref="upload"
             action="/tenant/createTenant"
@@ -18,7 +18,7 @@
             :show-file-list="false"
             :disabled="disabled"
           >
-            <img v-if="logo" :src="logo" class="logo">
+            <img id="imgLogo" v-if="imgLogo" :src="imgLogo" class="logo">
             <i v-else class="el-icon-plus logo-uploader-icon"></i>
           </el-upload>
           <p class="text_tips">建议尺寸：128*128</p>
@@ -38,7 +38,7 @@ export default {
     return {
       disabled: true,
       name: '',
-      logo: '',
+      imgLogo: '',
       editable: false,
       imgSrc: null,
       id: ''
@@ -68,7 +68,7 @@ export default {
          if (res.data) {
            _this.name = res.data.tenantName
            if (res.data.logo) {
-             _this.logo = res.data.logo
+             _this.imgLogo = res.data.logo
            }
            _this.id = res.data.id
          }
@@ -80,7 +80,7 @@ export default {
       this.disabled = false
     },
     handleChange (file, fileList) {
-      this.logo = URL.createObjectURL(file.raw)
+      this.imgLogo = URL.createObjectURL(file.raw)
     },
     submit () {
       if (this._checkForm()) {
@@ -89,7 +89,7 @@ export default {
         if (this.$refs.upload.uploadFiles[0]) {
           // 将文件转换为file
           let img = new Image()
-          img.src = document.querySelector('img').src
+          img.src = document.getElementById('imgLogo').src
           let imgName = this.$refs.upload.uploadFiles[0].name
           let base64 = _self._image2Base64(img)
           formData.append('file', _self._convertBase64UrlToBlob(base64), imgName)

@@ -28,16 +28,6 @@
       <el-table-column prop="name" header-align="center" align="center" label="姓名"></el-table-column>
       <el-table-column prop="userName" header-align="center" align="center" label="用户名"></el-table-column>
       <el-table-column prop="mailbox" header-align="center" align="center" label="邮箱"></el-table-column>
-      <el-table-column fixed="right" header-align="center" align="center" width="150" label="操作">
-        <template slot-scope="scope">
-          <el-button
-            v-if="isAuth('sys:user:update')"
-            type="text"
-            size="small"
-            @click="addOrUpdateHandle(scope.row)"
-          >修改</el-button>
-        </template>
-      </el-table-column>
     </el-table>
     <el-footer class="pagination-footer">
       <el-pagination
@@ -51,17 +41,12 @@
         :total="pagination.total"
       ></el-pagination>
     </el-footer>
-    <add-or-update v-if="addOrUpdateVisible" ref="addOrUpdate"></add-or-update>
   </div>
 </template>
 
 <script>
 
- import AddOrUpdate from './user-add-or-update'
 export default {
-   components: {
-      AddOrUpdate
-    },
   name: 'user-list',
   data () {
     return {
@@ -86,8 +71,7 @@ export default {
   },
   methods: {
       // 新增 / 修改
-      addOrUpdateHandle (row) {
-        debugger
+      addOrUpdateHandle (row) {       
         this.addOrUpdateVisible = true
         this.$nextTick(() => {
           this.$refs.addOrUpdate.init(row)

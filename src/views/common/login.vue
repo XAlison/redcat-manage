@@ -45,7 +45,7 @@
           </el-select>
         </el-tooltip>
       </el-form-item>
-      <div v-if="(hasTenant && isSecondValidate)||isFirstLogin">
+      <div v-if="(hasTenant && isSecondValidate)||isFirstLogin||showResetPassword">
         <el-tooltip
           v-model="page.validateState.imageCode.isValid"
           :content="page.validateState.imageCode.message"
@@ -147,11 +147,6 @@ export default {
       }).catch((error) => {
         callback(new Error(error.response.error.message))
       })
-      // this.$axios.post(`/api/verifyCode/verPicCode`, {picCode: value}).then(res => {
-      //   callback()
-      // }).catch((error) => {
-      //   callback(new Error(error.response.error.message))
-      // })
     }
 
     const validatePhoneCode = (rule, value, callback) => {
@@ -164,20 +159,6 @@ export default {
       {
          callback()
       }
-      // this.$http({
-      //         url: this.$http.adornUrl(`/api/verifyCode/verPhoneCode`),
-      //         method: 'post',
-      //         data: this.$http.adornData(parms)
-      //       }).then(res => {
-      //          if(res.data.code==500)
-      //         {
-      //           callback(new Error("手机验证码输入错误"))
-      //           return
-      //         }
-      //   callback()
-      // }).catch((error) => {
-      //   callback(new Error(error.response.data.message))
-      // })
     }
 
     // 校验密码
@@ -318,17 +299,11 @@ export default {
             }).catch((error) => {
           this.showError('phone', error.response.message)
         })
-
-      // return this.$axios.get(`/api/accounts/getAccountsByPhone`, {params: {phone: this.ruleForm.phone, loginIp: this.ruleForm.loginIp, cityId: this.ruleForm.cityId, cityName: this.ruleForm.cityName}})
-      //   .catch((error) => {
-      //     this.showError('phone', error.response.message)
-      //   })
     },
     currentSel (selVal) {
       this.ruleForm.isFirstLogin = this.user.tenants.find(m => m.accountId === selVal).firstLogin
     },
     login () {
-      debugger
       let parms = {
         phone: this.ruleForm.phone,
         password: this.ruleForm.confirmPassword ? this.ruleForm.confirmPassword : this.ruleForm.password,
@@ -361,21 +336,6 @@ export default {
           }).catch(error => {
             this.showError(error.field, error.message)
           })
-
-          // this.$axios.post('/api/accounts/setManagePassword', parms).then(res => {
-          //   this.$notify.success({
-          //     title: '提示',
-          //     offset: 100,
-          //     message: '设置密码成功',
-          //     showClose: true
-          //   })
-          //   this.ruleForm.password = ''
-          //   this.ruleForm.confirmPassword = ''
-          //   this.ruleForm.forgetPassword = false
-          //   this.ruleForm.successState = true
-          // }).catch(error => {
-          //   this.showError(error.field, error.message)
-          // })
         }
       } else {
         if (this.ruleForm.phone && this.ruleForm.tenant) {
@@ -392,14 +352,6 @@ export default {
             this.showError(error.field, error.message)
           })
 
-
-          // this.$axios.post('/api/accounts/login', parms).then(res => {
-          //   if (res.data === '登陆成功') {
-          //     this.$router.push('/manage/index')
-          //   }
-          // }).catch(error => {
-          //   this.showError(error.field, error.message)
-          // })
         }
       }
     },

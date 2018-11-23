@@ -36,14 +36,6 @@ export default {
           type: this.isChangeManage ? this.isChangeManage : (this.isFirstLogin || this.isRestPassword ? '2' : '1')
            })
             })
-        // // 执行发送验证码
-        // this.$axios.post(`/api/verifyCode/sendPhoneCode`, {
-        //   message: this.isChangeManage || this.isRestPassword ? '重置管理员' : (this.isFirstLogin ? '设置密码' : '登录密码'),
-        //   picCode: this.imgCode,
-        //   phoneNum: this.phone,
-        //   type: this.isChangeManage ? this.isChangeManage : (this.isFirstLogin || this.isRestPassword ? '2' : '1')
-        // }
-        // )
         this.resetInterval()
       })
     },

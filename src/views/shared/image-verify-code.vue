@@ -49,11 +49,6 @@ export default {
           }).then((res) => {
            this.imageSrc = 'data:image/jpg;base64,' + res.data
          })
-      // // 调用后台获取图片
-      // return this.$axios.get(`/api/verifyCode/generatePicCode?t=` + new Date().getTime())
-      //   .then((res) => {
-      //     this.imageSrc = 'data:image/jpg;base64,' + res.data
-      //   })
     },
      // 获取验证码
     getCaptcha () {
